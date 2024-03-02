@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from service_openai import get_genereated_response
+from os import environ
 
 app = Flask(__name__)
 CORS(app)
@@ -16,4 +17,4 @@ def get_ai_respone():
     })
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True,port=int(environ.get("OPEN_AI_PORT","5000")))

@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from service_vertex import get_chat_session,get_chat_response
+from os import environ
 
 app = Flask(__name__)
 CORS(app)
@@ -28,4 +29,4 @@ def set_session():
 
 
 if __name__ == '__main__':
-    app.run(debug=True,port=5001)
+    app.run(debug=True,port=int(environ.get("VERTEX_AI_PORT","5001")))
